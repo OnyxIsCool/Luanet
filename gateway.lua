@@ -13,9 +13,6 @@ end
 
 --// Services
 local UIS = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 local UserInputService = UIS
 
 --// PandaAuth
@@ -28,14 +25,17 @@ local KEY_FILE = "claire_key.txt"
 local CLI = {}
 
 CLI["ScreenGui_1"] = Instance.new("ScreenGui")
-CLI["ScreenGui_1"].Parent = PlayerGui
-CLI["ScreenGui_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+CLI["ScreenGui_1"].Parent = gethui()
+CLI["ScreenGui_1"].ZIndexBehavior = Enum.ZIndexBehavior.Global
+CLI["ScreenGui_1"].IgnoreGuiInset = true
+CLI["ScreenGui_1"].ResetOnSpawn = false
 
 CLI["Frame_2"] = Instance.new("Frame", CLI["ScreenGui_1"])
 CLI["Frame_2"].BorderSizePixel = 0
 CLI["Frame_2"].BackgroundColor3 = Color3.fromRGB(44,44,44)
 CLI["Frame_2"].Size = UDim2.new(0.48301,0,0.67906,0)
 CLI["Frame_2"].Position = UDim2.new(0.24751,0,0.08488,0)
+CLI["Frame_2"].ZIndex = 999
 
 Instance.new("UICorner", CLI["Frame_2"])
 
@@ -61,7 +61,7 @@ CLI["TextLabel_6"].Size = UDim2.new(0.48259,0,0.21667,0)
 CLI["TextLabel_6"].Position = UDim2.new(-0.1393,0,-0.06667,0)
 
 CLI["TextLabel3_7"] = Instance.new("TextLabel", CLI["Frame_2"])
-CLI["TextLabel3_7"].Text = "COMPLETE THE KEY SYSTEM TO ACCESS THE EXECUTOR"
+CLI["TextLabel3_7"].Text = "COMPLETE THE KEY SYSTEM TO ACCESS THE SCRIPT"
 CLI["TextLabel3_7"].BackgroundTransparency = 1
 CLI["TextLabel3_7"].TextColor3 = Color3.fromRGB(255,255,255)
 CLI["TextLabel3_7"].Size = UDim2.new(0.87065,0,0.08333,0)
@@ -81,6 +81,7 @@ CLI["TextBox_9"].Size = UDim2.new(0.71642,0,0.15,0)
 CLI["TextBox_9"].Position = UDim2.new(0.1393,0,0.46667,0)
 CLI["TextBox_9"].BackgroundColor3 = Color3.fromRGB(66,66,66)
 CLI["TextBox_9"].TextColor3 = Color3.fromRGB(255,255,255)
+CLI["TextBox_9"].TextWrapped = true
 Instance.new("UICorner", CLI["TextBox_9"])
 
 CLI["TextButton_b"] = Instance.new("TextButton", CLI["Frame_2"])
@@ -102,7 +103,7 @@ Instance.new("UICorner", CLI["TextButton_d"])
 Instance.new("UIAspectRatioConstraint", CLI["Frame_2"]).AspectRatio = 1.675
 
 --// Toggle GUI
-local MobileGui = Instance.new("ScreenGui", PlayerGui)
+local MobileGui = Instance.new("ScreenGui", gethui())
 MobileGui.Name = "MobileToggle"
 
 local button = Instance.new("ImageButton", MobileGui)
@@ -177,6 +178,7 @@ CLI["TextButton_d"].MouseButton1Click:Connect(function()
         writefile(KEY_FILE, key)
         CLI["TextLabel4_5"].Text = "KEY VALID & SAVED!"
         print("[PandaAuth]", message)
+		CLI["ScreenGui_1"]:Destroy()
         loadstring(game:HttpGet(ScriptURL))()
         print("Working")
     else
@@ -213,6 +215,7 @@ if savedKey ~= "" then
     if success then
         CLI["TextLabel4_5"].Text = "KEY VALID (SAVED)!"
         loadstring(game:HttpGet(ScriptURL))()
+		CLI["ScreenGui_1"]:Destroy()
         print("Working")
     else
         CLI["TextLabel4_5"].Text = "SAVED KEY INVALID!"
@@ -223,5 +226,6 @@ end
 CLI["TextButton2_4"].MouseButton1Click:Connect(function()
 	CLI["ScreenGui_1"]:Destroy()
 end)
+
 
 CLI["TextButton_8"].MouseButton1Click:Connect(ToggleKeySystem)
