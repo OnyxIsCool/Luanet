@@ -106,7 +106,7 @@ button.Size = UDim2.fromOffset(42,42)
 button.Position = UDim2.fromScale(0.5,0.5)
 button.AnchorPoint = Vector2.new(0.5,0.5)
 button.Image = "rbxassetid://7734091286"
-button.Visible = true
+button.Visible = false
 button.BackgroundColor3 = Color3.fromRGB(20,20,20)
 button.AutoButtonColor = false
 Instance.new("UICorner", button).CornerRadius = UDim.new(1,0)
@@ -129,7 +129,7 @@ end)
 local function MakeDraggable(gui)
     local dragging,startPos,dragStart
     gui.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
             dragStart = input.Position
             startPos = gui.Position
@@ -137,7 +137,7 @@ local function MakeDraggable(gui)
     end)
 
     gui.InputChanged:Connect(function(input)
-        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
             local delta = input.Position - dragStart
             gui.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
         end
@@ -160,7 +160,7 @@ CLI.Check.MouseButton1Click:Connect(function()
     end
 
     CLI.Status.Text = "CHECKING..."
-    local success,message = auth:validate(key)
+    local success, message = auth.validate(key)
 
     if success then
         if writefile then writefile(KEY_FILE,key) end
@@ -191,7 +191,7 @@ end
 
 if isfile and readfile(KEY_FILE) ~= "" then
     local saved = readfile(KEY_FILE)
-    local success = auth:validate(saved)
+    local success = auth.validate(saved)
     if success then
         loadstring(game:HttpGet(ScriptURL))()
         CLI.ScreenGui:Destroy()
@@ -203,6 +203,7 @@ CLI.Close.MouseButton1Click:Connect(function()
 end)
 
 CLI.Min.MouseButton1Click:Connect(ToggleKeySystem)
+
 
 
 
