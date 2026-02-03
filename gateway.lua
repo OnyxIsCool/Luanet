@@ -33,7 +33,6 @@ CLI.Frame.BorderSizePixel = 0
 CLI.Frame.BackgroundColor3 = Color3.fromRGB(44,44,44)
 CLI.Frame.Size = UDim2.new(0.48301,0,0.67906,0)
 CLI.Frame.Position = UDim2.new(0.24751,0,0.08488,0)
-CLI.Frame.ZIndex = 999
 Instance.new("UICorner", CLI.Frame)
 
 CLI.Close = Instance.new("TextButton", CLI.Frame)
@@ -205,3 +204,4 @@ CLI.Close.MouseButton1Click:Connect(function()
 end)
 
 CLI.Min.MouseButton1Click:Connect(ToggleKeySystem)
+
