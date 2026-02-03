@@ -12,7 +12,8 @@ if not ScriptURL then
 end
 
 --// Services
-local UserInputService = game:GetService("UserInputService")
+local UIS = game:GetService("UserInputService")
+local UserInputService = UIS
 
 --// PandaAuth
 local PandaAuth = loadstring(game:HttpGet("https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/Key/PandaAuth.lua"))()
@@ -25,8 +26,7 @@ local CLI = {}
 
 CLI.ScreenGui = Instance.new("ScreenGui")
 CLI.ScreenGui.Parent = gethui()
-CLI.ScreenGui.IgnoreGuiInset = true
-CLI.ScreenGui.ResetOnSpawn = false
+CLI.ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 CLI.Frame = Instance.new("Frame", CLI.ScreenGui)
 CLI.Frame.BorderSizePixel = 0
@@ -204,4 +204,5 @@ CLI.Close.MouseButton1Click:Connect(function()
 end)
 
 CLI.Min.MouseButton1Click:Connect(ToggleKeySystem)
+
 
