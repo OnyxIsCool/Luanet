@@ -13,7 +13,6 @@ end
 
 --// Services
 local UIS = game:GetService("UserInputService")
-local UserInputService = UIS
 
 --// PandaAuth
 local PandaAuth = loadstring(game:HttpGet("https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/Key/PandaAuth.lua"))()
@@ -204,5 +203,6 @@ CLI.Close.MouseButton1Click:Connect(function()
 end)
 
 CLI.Min.MouseButton1Click:Connect(ToggleKeySystem)
+
 
 
