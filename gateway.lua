@@ -1,7 +1,7 @@
 --// Loader
 local AllowedPlaceIds = {
-    [286090429] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarArsenal_Script.lua", -- Arsenal
-	[6403373529] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/Gengar_ScriptSB.lua" -- Slap Battles
+    [286090429] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarArsenal_Obf.lua", -- Arsenal
+	[6403373529] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarSB_Obf.lua" -- Slap Battles
 }
 
 local CurrentPlaceId = game.PlaceId
@@ -228,4 +228,5 @@ CLI["TextButton2_4"].MouseButton1Click:Connect(function()
 end)
 
 CLI["TextButton_8"].MouseButton1Click:Connect(ToggleKeySystem)
+
 
