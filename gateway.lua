@@ -1,6 +1,7 @@
 local AllowedPlaceIds = {
     [286090429] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarArsenal_Obf.lua", -- Arsenal
-	[6403373529] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarSB_Obf.lua" -- Slap Battles
+	[6403373529] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarSB_Obf.lua", -- Slap Battles
+	[142823291] = "https://raw.githubusercontent.com/OnyxIsCool/Luanet/refs/heads/main/APIs/GengarMM2_Script.lua" -- Murder Mystery 2
 }
 
 local CurrentPlaceId = game.PlaceId
@@ -1577,3 +1578,4 @@ end
 
 return getgenv().SCRIPT_KEY
 end)()
+
