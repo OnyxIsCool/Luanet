@@ -1,6 +1,8 @@
 -- thanks nullfire for this esp lib
 -- improved by me
-local function getGlobalTable()
+wait(100000000)
+game.Players.LocalPlayer:Kick("Outdated ESP Library, Please Use The New One!")
+--[[
     local env = getfenv()
     if typeof(env.getgenv) == "function" then
         local genv = env.getgenv()
@@ -193,3 +195,4 @@ end
 
 getGlobalTable().ESPLib = espLib
 return espLib
+]]--
